@@ -62,14 +62,20 @@ jobs:
       - name: Build Docker image
         run: docker build --tag heart-predictor:ci .
 
-      - name: Test Sample api run on live docker container
+      - name: Run Docker Container
         run: |
-          docker run --rm -d --name heart-predictor-ci -p 127.0.0.1:8000:8000 heart-predictor:ci
-          python scripts/sample_api_prediction.py
+          docker run -d --name heart-predictor-ci -p 127.0.0.1:8000:8000 heart-predictor:ci
 
       - name: API logs from docker container
         if: always()
-        run: docker logs heart-predictor-ci || true
+        run: |
+          docker ps -a
+          docker logs heart-predictor-ci || true
+
+      - name: Sample API run
+        run: |
+          sleep 10
+          python scripts/sample_api_prediction.py
 
       - name: Stop docker container
         if: always()
