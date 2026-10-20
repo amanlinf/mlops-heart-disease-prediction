@@ -1,0 +1,14 @@
+artifact_uri: file:///home/amanlinf/Projects/mlops-heart-disease-prediction/mlruns/200395307261216429/c02716f1587f48faac6afad6728568c6/artifacts
+end_time: 1792490548320
+entry_point_name: ''
+experiment_id: '200395307261216429'
+lifecycle_stage: active
+run_id: c02716f1587f48faac6afad6728568c6
+run_name: logistic_regression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1792490548298
+status: 3
+tags: []
+user_id: amanlinf

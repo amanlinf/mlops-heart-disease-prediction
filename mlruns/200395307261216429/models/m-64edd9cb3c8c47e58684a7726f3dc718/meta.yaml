@@ -1,0 +1,10 @@
+artifact_location: file:///home/amanlinf/Projects/mlops-heart-disease-prediction/mlruns/200395307261216429/models/m-64edd9cb3c8c47e58684a7726f3dc718/artifacts
+creation_timestamp: 1792490557276
+experiment_id: '200395307261216429'
+last_updated_timestamp: 1792490562897
+model_id: m-64edd9cb3c8c47e58684a7726f3dc718
+model_type: null
+name: model
+source_run_id: 0161f5e3598b45f198afd7af86531701
+status: 2
+status_message: null

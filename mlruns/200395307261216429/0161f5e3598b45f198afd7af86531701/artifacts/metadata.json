@@ -1,0 +1,59 @@
+{
+  "dataset_source": "UCI processed Cleveland Heart Disease (dataset ID 45)",
+  "n_samples": 303,
+  "n_train": 242,
+  "n_test": 61,
+  "feature_names": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "class_definition": "target=1 when UCI num > 0; otherwise 0",
+  "selected_model": "logistic_regression",
+  "cv_selection_metric": "roc_auc",
+  "candidate_results": {
+    "logistic_regression": {
+      "best_parameters": {
+        "classifier__C": 0.1
+      },
+      "cv_metrics": {
+        "accuracy": 0.8304421768707483,
+        "precision": 0.8232210012210011,
+        "recall": 0.8098814229249012,
+        "roc_auc": 0.9027904462687071
+      }
+    },
+    "random_forest": {
+      "best_parameters": {
+        "classifier__max_depth": null,
+        "classifier__min_samples_leaf": 3,
+        "classifier__n_estimators": 100
+      },
+      "cv_metrics": {
+        "accuracy": 0.8096088435374149,
+        "precision": 0.7977327152887794,
+        "recall": 0.791699604743083,
+        "roc_auc": 0.9019926128621781
+      }
+    }
+  },
+  "test_metrics": {
+    "accuracy": 0.8852459016393442,
+    "precision": 0.8387096774193549,
+    "recall": 0.9285714285714286,
+    "roc_auc": 0.9653679653679654
+  },
+  "model_sha256": "97490ef832b3fc5ccb12b68023c569baeb738ca5fc55b1992bec06432e7ba923",
+  "random_state": 42,
+  "cv_folds": 5
+}

@@ -1,0 +1,14 @@
+artifact_uri: file:///home/amanlinf/Projects/mlops-heart-disease-prediction/mlruns/200395307261216429/469dcb822d59468f94438dd97a9ed0e6/artifacts
+end_time: 1792490556396
+entry_point_name: ''
+experiment_id: '200395307261216429'
+lifecycle_stage: active
+run_id: 469dcb822d59468f94438dd97a9ed0e6
+run_name: random_forest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1792490556372
+status: 3
+tags: []
+user_id: amanlinf

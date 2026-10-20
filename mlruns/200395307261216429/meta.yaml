@@ -1,0 +1,6 @@
+artifact_location: file:///home/amanlinf/Projects/mlops-heart-disease-prediction/mlruns/200395307261216429
+creation_time: 1792490546232
+experiment_id: '200395307261216429'
+last_update_time: 1792490546232
+lifecycle_stage: active
+name: uci-heart-disease-binary-classification
