@@ -1,0 +1,28 @@
+{
+  "id": null,
+  "uid": "heart-mlops-overview",
+  "title": "Heart Disease Prediction API — MLOps",
+  "tags": ["mlops", "heart-disease", "fastapi"],
+  "timezone": "browser",
+  "schemaVersion": 40,
+  "version": 1,
+  "refresh": "10s",
+  "time": {"from": "now-30m", "to": "now"},
+  "panels": [
+    {
+      "id": 1, "type": "timeseries", "title": "HTTP Requests / sec",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+      "targets": [{"expr": "sum by (route) (rate(heart_api_http_requests_total[2m]))", "legendFormat": "{{route}}"}]
+    },
+    {
+      "id": 2, "type": "timeseries", "title": "HTTP 5xx Error Rate",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+      "targets": [{"expr": "sum(rate(heart_api_http_requests_total{status=~\"5..\"}[2m]))", "legendFormat": "5xx/s"}]
+    },
+    {
+      "id": 3, "type": "timeseries", "title": "P95 Request Latency (seconds)",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 8},
+      "targets": [{"expr": "histogram_quantile(0.95, sum by (le, route) (rate(heart_api_http_request_duration_seconds_bucket[5m])))", "legendFormat": "{{route}}"}]
+    }
+  ]
+}

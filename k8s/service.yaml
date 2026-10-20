@@ -1,0 +1,16 @@
+# using local kubernetes minikube setup
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-pedictor-api
+  labels:
+    app: heart-pedictor-api
+spec:
+  type: LoadBalancer
+  selector:
+    app: heart-pedictor-api
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
