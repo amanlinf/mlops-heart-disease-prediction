@@ -3,7 +3,7 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: heart_api
+  - job_name: heart-pedictor-api
     metrics_path: /metrics
     static_configs:
-      - targets: ['api:8000']
+      - targets: ["api:8000"]

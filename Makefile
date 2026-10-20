@@ -1,4 +1,4 @@
-.PHONY: install-dependencies data eda train mlflow-ui serve sample-api-run test lint docker-build install-kubectl-local install-minikube-local k8s-deploy k8s-status k8s-forward k8s-sample-api-run k8s-clean
+.PHONY: install-dependencies data eda train mlflow-ui serve sample-api-run test lint docker-build install-kubectl-local install-minikube-local k8s-deploy k8s-status k8s-forward k8s-sample-api-run k8s-clean monitor
 
 # install python dependencies
 install-dependencies:
@@ -79,3 +79,8 @@ k8s-sample-api-run :
 # remove k8s deployment and service resources
 k8s-clean:
 	kubectl delete -f k8s/ --ignore-not-found
+
+monitor:
+	export GRAFANA_ADMIN_PASSWORD='local-pass'
+	docker compose up --build -d
+	docker compose ps
