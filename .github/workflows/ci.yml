@@ -36,5 +36,12 @@ jobs:
       - name: Generate EDA outputs
         run: python -m src.eda
 
+      - name: Prepare MLflow tracking directory
+        run: |
+          rm -rf ./mlruns
+          mkdir -p ./mlruns
       - name: Train candidate models and track experiments
-        run: python -m src.train
+        env:
+          MLFLOW_TRACKING_URI: file://${{ github.workspace }}/mlruns
+        run: |
+          python -m src.train
