@@ -1,4 +1,4 @@
-.PHONY: install-dependencies data eda train mlflow-ui serve sample-api-run
+.PHONY: install-dependencies data eda train mlflow-ui serve sample-api-run test
 
 install-dependencies:
 	python -m pip install -r requirements-dev.txt
@@ -20,3 +20,6 @@ serve:
 
 sample-api-run:
 	python scripts/sample_api_prediction.py
+
+test:
+	python -m pytest -v
