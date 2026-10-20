@@ -1,4 +1,4 @@
-.PHONY: install-dependencies data eda train mlflow-ui serve sample-api-run test
+.PHONY: install-dependencies data eda train mlflow-ui serve sample-api-run test lint
 
 install-dependencies:
 	python -m pip install -r requirements-dev.txt
@@ -23,3 +23,6 @@ sample-api-run:
 
 test:
 	python -m pytest -v
+
+lint:
+	ruff check .
