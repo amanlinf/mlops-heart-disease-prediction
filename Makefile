@@ -1,4 +1,4 @@
-.PHONY: install-dependencies data eda train mlflow-ui serve sample-api-run test lint
+.PHONY: install-dependencies data eda train mlflow-ui serve sample-api-run test lint docker-build
 
 install-dependencies:
 	python -m pip install -r requirements-dev.txt
@@ -26,3 +26,6 @@ test:
 
 lint:
 	ruff check .
+
+docker-build:
+	docker build -t heart-predictor:1.0 .

@@ -39,9 +39,38 @@ jobs:
       - name: Prepare MLflow tracking directory
         run: |
           rm -rf ./mlruns
+          rm -rf ./artifacts
+          rm -rf ./plots/evaluation
+
           mkdir -p ./mlruns
+          mkdir -p ./artifacts
+          mkdir -p ./plots/evaluation
+
       - name: Train candidate models and track experiments
         env:
           MLFLOW_TRACKING_URI: file://${{ github.workspace }}/mlruns
         run: |
           python -m src.train
+
+      - name: Verifying training artifacts created successfully
+        run: |
+          test -f artifacts/model.joblib
+          test -f artifacts/metadata.json
+          test -f plots/evaluation/confusion_matrix.png
+          test -f plots/evaluation/roc_curve.png
+
+      - name: Build Docker image
+        run: docker build --tag heart-predictor:ci .
+
+      - name: Test Sample api run on live docker container
+        run: |
+          docker run --rm -d --name heart-predictor-ci -p 127.0.0.1:8000:8000 heart-predictor:ci
+          python scripts/sample_api_prediction.py
+
+      - name: API logs from docker container
+        if: always()
+        run: docker logs heart-predictor-ci || true
+
+      - name: Stop docker container
+        if: always()
+        run: docker stop heart-predictor-ci || true
