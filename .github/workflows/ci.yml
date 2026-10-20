@@ -1,0 +1,40 @@
+name: heart disease prediction ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-train-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      - name: Lint source code
+        run: ruff check .
+
+      - name: Unit tests
+        run: python -m pytest -v
+
+      - name: Fetch and prepare UCI dataset
+        run: python -m src.data
+
+      - name: Generate EDA outputs
+        run: python -m src.eda
+
+      - name: Train candidate models and track experiments
+        run: python -m src.train
