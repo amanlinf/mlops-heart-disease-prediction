@@ -62,7 +62,7 @@ k8s-deploy:
 	docker build -t heart-predictor:1.0 .
 	minikube image load heart-predictor:1.0
 	kubectl apply -f k8s/
-	kubectl rollout status deployment/heart-api --timeout=180s
+	kubectl rollout status deployment/heart-pedictor-api --timeout=180s
 
 # show kubernetes resources metrics
 k8s-status:
